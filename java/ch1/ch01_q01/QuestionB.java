@@ -1,15 +1,14 @@
 package ch01_q01;
 
-public class QuestionA {
+public class QuestionB {
 
-    static boolean isUnique(String strs) {
-        boolean[] char_set = new boolean[128];
-        for (int i = 0; i < strs.length(); i++) {
-            int val = strs.charAt(i);
-//            System.out.println(val);
-            if (char_set[val])
+    public static boolean isUnique(String str) {
+        int checker = 0;
+        for (int i = 0; i < str.length(); i++) {
+            int val = str.charAt(i) - 'a';
+            if ((checker & (1 << val)) > 0)
                 return false;
-            char_set[val] = true;
+            checker |= (1 << val);
         }
         return true;
     }
